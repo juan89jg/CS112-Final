@@ -18,8 +18,8 @@ public class Card extends RandomNumber
 	}
 	public void DealersCards()
 	{
-		DealerCardValue1 = this.getValue();
-		DealerCardValue2 = this.getValue();
+		DealerCardValue1 = super.getValue();
+		DealerCardValue2 = super.getValue();
 		System.out.printf("The Dealer has pulled a %d and %d", DealerCardValue1,DealerCardValue2);
 	}
 	public void UsersCardValue()
@@ -27,11 +27,11 @@ public class Card extends RandomNumber
 		UserCards[0] = super.getValue();
 		UserCards[1] = super.getValue();
 		UserTotal+= UserCards[0]+ UserCards[1];
-		System.out.printf("Here are your Cards %d , %d", UserCards[0], UserCards[1]);
+		System.out.printf("\nHere are your Cards %d , %d", UserCards[0], UserCards[1]);
 	}
 	public void UsersNextCard()
 	{
-		for (int i = 3; UserTotal <22; i++)
+		for (int i = 3; i < UserCards.length; i++)
 		{
 			UserCards[i] = this.hit();
 			k=i;
