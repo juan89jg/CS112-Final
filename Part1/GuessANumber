@@ -1,0 +1,67 @@
+import java.util.Scanner;
+
+public class GuessANumber 
+{
+	public static void main( String[]args)
+	{
+		Scanner input = new Scanner(System.in);
+		boolean KeepGoing= true;
+		int option;
+		int Cnumber;
+		int userNumber;
+		String continueOption;
+		
+		System.out.println("Welcome to the Guess a number Game");
+		while(KeepGoing)
+		{
+		System.out.println("Please choose from a range");
+		System.out.println("1 For a single Dice 1-6");
+		System.out.println("2 For Double Dice 1-12");
+		option = input.nextInt();
+		if (option == 1 || option == 2 )
+		{
+			if(option == 1)
+			{
+				Dice myDice = new Dice(1,6);
+				Cnumber = Dice.getValue();
+				System.out.println("Please Choose a number between 1 and 6");
+				userNumber = input.nextInt();
+				if(userNumber == Cnumber)
+				{
+					System.out.printf("You Guessed right, your number %d computer number %d", userNumber, Cnumber);
+				}
+				else
+				{
+					System.out.printf("Sorry you guessed wrong,  your number %d computer number %d" , userNumber, Cnumber);
+				}
+			}
+			else
+			{
+				DoubleDice myDDice = new DoubleDice(1,12);
+				Cnumber = myDDice.getValue();
+				System.out.println("Please choose a number between 1 and 12");
+				userNumber = input.nextInt();
+				if(userNumber == Cnumber)
+				{
+					System.out.printf("You Guessed right, your number %d computer number %d", userNumber, Cnumber);
+				}
+				else
+				{
+					System.out.printf("Sorry you guessed wrong,  your number %d computer number %d" , userNumber, Cnumber);
+				}
+				
+			}
+		}
+		else
+		{
+			System.out.println("Wrong option entered");
+		}
+		System.out.println("\nWould you like to continue?\nY for yes N for no");
+		continueOption = input.next();
+		if (continueOption.toUpperCase().startsWith("N"))
+			{
+			KeepGoing = false;
+			}
+		}
+	}
+}
