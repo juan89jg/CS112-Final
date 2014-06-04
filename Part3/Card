@@ -1,0 +1,61 @@
+
+public class Card extends RandomNumber
+{
+	private int DealerCardValue1;
+	private int DealerCardValue2;
+	private static int[] UserCards = new int[100];
+	private static int UserTotal;
+	private static int k;
+	
+	public Card(int lower, int upper)
+	{
+		super(lower, upper);
+	}
+	public void Greeting()
+	{
+		System.out.println("Welcome to the Card Game");
+		System.out.println("The Dealer is Dealing the Cards");
+	}
+	public void DealersCards()
+	{
+		DealerCardValue1 = this.getValue();
+		DealerCardValue2 = this.getValue();
+		System.out.printf("The Dealer has pulled a %d and %d", DealerCardValue1,DealerCardValue2);
+	}
+	public void UsersCardValue()
+	{
+		UserCards[0] = super.getValue();
+		UserCards[1] = super.getValue();
+		UserTotal+= UserCards[0]+ UserCards[1];
+		System.out.printf("Here are your Cards %d , %d", UserCards[0], UserCards[1]);
+	}
+	public void UsersNextCard()
+	{
+		for (int i = 3; UserTotal <22; i++)
+		{
+			UserCards[i] = this.hit();
+			k=i;
+		}
+		System.out.printf("Your next card is %d", UserCards[k]);
+	}
+	public int hit()
+	{
+		return super.getValue();
+	}
+	public void Result(int value)
+	{
+		if (value <= 21)
+		{
+			System.out.println("Congrats you won");
+		}
+		else
+		{
+			System.out.println("Sorry you lost");
+		}
+	}
+	public int GetUserTotal()
+	{
+		return UserTotal;
+	}
+
+}
