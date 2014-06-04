@@ -1,0 +1,119 @@
+import java.util.Scanner;
+
+public class GuessANumber 
+{
+	public static void main( String[]args)
+	{
+		Scanner input = new Scanner(System.in);
+		boolean KeepGoing= true;
+		boolean KeepPulling = true;
+		int option;
+		int Cnumber;
+		int userNumber;
+		int GamesWon = 0;
+		int GamesLost = 0;
+		int TotalGames = 0;
+		int userCardTotal;
+		String continueOption;
+		String pullOption;
+		String KeepPullingOption;
+		
+		
+		History myHistory = new History();
+		
+		System.out.println("Welcome to the Guess a number Game");
+		while(KeepGoing)
+		{
+		System.out.println("Please choose from a range");
+		System.out.println("1 For a single Dice 1-6");
+		System.out.println("2 For Double Dice 1-12");
+		System.out.println("3 For BlackJack Game");
+		option = input.nextInt();
+		if (option == 1 || option == 2 || option ==3)
+		{
+			if(option == 1)
+			{
+				Dice myDice = new Dice(1,6);
+				Cnumber = Dice.getValue();
+				System.out.println("Please Choose a number between 1 and 6");
+				userNumber = input.nextInt();
+				if(userNumber == Cnumber)
+				{
+					System.out.printf("You Guessed right, your number %d computer number %d", userNumber, Cnumber);
+					GamesWon++;
+				}
+				else
+				{
+					System.out.printf("Sorry you guessed wrong,  your number %d computer number %d" , userNumber, Cnumber);
+					GamesLost++;
+				}
+				TotalGames++;
+				myHistory.StoreValue(Cnumber, userNumber, TotalGames);
+			}
+			else if (option == 2)
+			{
+				DoubleDice myDDice = new DoubleDice(1,12);
+				Cnumber = myDDice.getValue();
+				System.out.println("Please choose a number between 1 and 12");
+				userNumber = input.nextInt();
+				if(userNumber == Cnumber)
+				{
+					System.out.printf("You Guessed right, your number %d computer number %d", userNumber, Cnumber);
+					GamesWon++;
+				}
+				else
+				{
+					System.out.printf("Sorry you guessed wrong,  your number %d computer number %d" , userNumber, Cnumber);
+					GamesLost++;
+				}
+				TotalGames++;
+				myHistory.StoreValue(Cnumber, userNumber, TotalGames);
+			}
+			else
+			{
+				Card myCardGame = new Card(1,12);
+				myCardGame.Greeting();
+				myCardGame.DealersCards();
+				myCardGame.UsersCardValue();
+				System.out.println("Would you like to pull another card? Y for yes N for no");
+				pullOption = input.next();
+				
+				if(pullOption.toUpperCase().startsWith("Y"))
+				{
+					while(KeepPulling)
+					{
+					myCardGame.UsersNextCard();
+					System.out.println("Would You like to pull again?");
+					KeepPullingOption = input.next();
+					if(KeepPullingOption.toUpperCase().startsWith("N"))
+					{
+					KeepPulling = false;	
+					}
+					}
+					userCardTotal = myCardGame.GetUserTotal();
+					myCardGame.Result(userCardTotal);
+				}	
+				else
+				{
+					userCardTotal = myCardGame.GetUserTotal();
+					myCardGame.Result(userCardTotal);
+				}
+			}
+		}
+		else
+		{
+			System.out.println("Wrong option entered");
+		}
+		System.out.println("\nWould you like to continue?\nY for yes N for no");
+		continueOption = input.next();
+		if (continueOption.toUpperCase().startsWith("N"))
+			{
+			KeepGoing = false;
+			}
+		}//end while
+		System.out.println("Here is your History");
+		System.out.printf("You Played %d Games, Won %d, Lost %d",TotalGames, GamesWon, GamesLost);
+		System.out.println(myHistory);
+		System.out.println("\nThanks for playing");
+	}
+}
