@@ -1,0 +1,9 @@
+
+public class DoubleDice extends Dice
+{
+	public DoubleDice(int lower, int upper)//constructor with 2 arguments
+	{
+		super(1,12);//pass those 2 arguments to the super constructor
+	}
+
+}
