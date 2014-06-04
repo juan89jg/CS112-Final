@@ -1,0 +1,15 @@
+import java.util.Random; //imports the random class
+
+public class RandomNumber 
+{
+	private static int number;// create a private integer variable named number
+	
+public RandomNumber(int lower, int upper)
+{
+	number = lower + (int)(Math.random() *(upper- lower));//Store a random number into the number variable
+}
+public static int getValue()
+{
+	return number;
+}
+}
