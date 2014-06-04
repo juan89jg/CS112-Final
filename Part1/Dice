@@ -1,0 +1,8 @@
+
+public class Dice extends RandomNumber
+{
+	public Dice(int lower, int upper)//Constructor with 2 arguments
+	{
+		super(lower,upper);//pass those two arguments to the superclass' constructor
+	}
+}
