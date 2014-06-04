@@ -1,0 +1,21 @@
+
+import java.util.Arrays;
+
+public class History 
+{
+	private int[] ComputerArray = new int[10];
+	private int[] UserArray = new int[10];
+	private String[] stringarray = new String[10];
+	static int i= 0;
+	public void StoreValue(int Cvalue, int Uvalue, int GameNumber)
+	{
+	ComputerArray[i]= Cvalue;
+	UserArray[i] = Uvalue;
+	 stringarray[i]= "Game number" + GameNumber;
+	 i++;
+	}
+	public String toString()
+	{
+		return "\nYour History\n" + "Game Number Result:\t\t"+ Arrays.toString(stringarray) +"\nComputer Numbers:\t\t" +Arrays.toString(ComputerArray)+ "\nYour Guesses:\t\t" + Arrays.toString(UserArray);
+	}
+}
