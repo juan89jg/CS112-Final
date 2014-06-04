@@ -75,7 +75,7 @@ public class GuessANumber
 				myCardGame.Greeting();
 				myCardGame.DealersCards();
 				myCardGame.UsersCardValue();
-				System.out.println("Would you like to pull another card? Y for yes N for no");
+				System.out.println("\nWould you like to pull another card? Y for yes N for no");
 				pullOption = input.next();
 				
 				if(pullOption.toUpperCase().startsWith("Y"))
@@ -83,7 +83,7 @@ public class GuessANumber
 					while(KeepPulling)
 					{
 					myCardGame.UsersNextCard();
-					System.out.println("Would You like to pull again?");
+					System.out.println("\nWould You like to pull again?");
 					KeepPullingOption = input.next();
 					if(KeepPullingOption.toUpperCase().startsWith("N"))
 					{
